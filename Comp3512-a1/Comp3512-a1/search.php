@@ -39,7 +39,7 @@
         <select id="search_genre" name="search_genre">
             <option value="">Select a Genre</option>
                  <?php 
-                    $sql = "SELECT * from genres order by genre_name";
+                    $sql = "SELECT * FROM genres order by genre_name";
                     $result = $database->query($sql);
                     $data = $result->fetchAll(PDO::FETCH_ASSOC); 
                     foreach ($data as $row){
