@@ -103,7 +103,12 @@
     <section>
         <h3>Top Artists</h3>
         <ul>
-             <!-- ... PHP HERE ... -->
+             <?php
+             $result2 = $database->query($query2);
+             while ($row2 = $result2->fetch(PDO::FETCH_ASSOC)) {
+                 echo '<li>' . $row2['artist_name'] . ' - ' . $row2['song_count'] . ' songs</li>';
+             }
+             ?>
         </ul>
     </section>
 
@@ -111,7 +116,13 @@
     <section>
         <h3>Most Popular Songs</h3>
         <ul>
-            <!-- ... PHP HERE ... -->
+            <?php
+             $result3 = $database->query($query3);
+            while($row3= $result->fetch(PDO::FETCH_ASSOC)){
+                echo '<li>' . $row3['title'] . ' by ' . $row3['artist_name'] . '</li>';
+
+            }
+            ?>
         </ul>
     </section>
 
@@ -119,7 +130,12 @@
     <section>
         <h3>One-hit wonders</h3>
         <ul>
-              <!-- ... PHP HERE ... -->
+            <?php
+                 $result4 = $database->query($query4);
+                while ($row4 = $result4->fetch(PDO::FETCH_ASSOC)) {
+                    echo '<li>' . $row4['title'] . ' by ' . $row4['artist_name'] . '</li>';
+                }
+                ?>
         </ul>
     </section>
 
@@ -127,7 +143,12 @@
     <section>
         <h3>Longest Acoustic Song</h3>
         <ul>
-             <!-- ... PHP HERE ... -->
+            <?php
+              $result5 = $database->query($query5);
+              while ($row5 = $result5->fetch(PDO::FETCH_ASSOC)) {
+                  echo '<li>' . $row5['title'] . ' by ' . $row5['artist_name'] . ' - Duration: ' . $row5['duration'] . ' seconds</li>';
+              }
+            ?>
         </ul>
     </section>
 
@@ -135,7 +156,13 @@
     <section>
         <h3>At the Club</h3>
         <ul>
-              <!-- ... PHP HERE ... -->
+        <?php
+                // Execute query6 and fetch results
+                $result6 = $database->query($query6);
+                while ($row6 = $result6->fetch(PDO::FETCH_ASSOC)) {
+                    echo '<li>' . $row6['title'] . ' by ' . $row6['artist_name'] . '</li>';
+                }
+                ?>
         </ul>
     </section>
 
@@ -143,7 +170,14 @@
     <section>
         <h3>Running Songs</h3>
         <ul>
-             <!-- ... PHP HERE ... --> 
+
+        <?php
+                
+                $result7 = $database->query($query7);
+                while ($row7 = $result7->fetch(PDO::FETCH_ASSOC)) {
+                    echo '<li>' . $row7['title'] . ' by ' . $row7['artist_name'] . '</li>';
+                }
+                ?>
         </ul>
     </section>
 
@@ -151,7 +185,12 @@
     <section>
         <h3>Studying Songs</h3>
         <ul>
-             <!-- ... PHP HERE ... -->
+        <?php
+                $result8 = $database->query($query8);
+                while ($row8 = $result8->fetch(PDO::FETCH_ASSOC)) {
+                    echo '<li>' . $row8['title'] . ' by ' . $row8['artist_name'] . '</li>';
+                }
+                ?>
         </ul>
     </section>
         </div>
