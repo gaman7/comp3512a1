@@ -1,0 +1,267 @@
+
+
+/* Reset some default styles for the body and HTML elements */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Style the header and navigation */
+header {
+    background-color: #333; /* Background color for the header */
+    color: #fff; /* Text color for the header */
+    padding: 20px 0; /* Padding on top and bottom of the header */
+    text-align: center; /* Center-align the content within the header */
+}
+
+h1 {
+    font-size: 36px; /* Font size for the main heading */
+}
+
+h2 {
+    font-size: 24px; /* Font size for the secondary heading */
+}
+
+nav ul {
+    list-style-type: none; /* Remove default list bullet points */
+    padding: 0; /* Remove default padding on the list */
+}
+
+nav ul li {
+    display: inline; /* Display list items horizontally */
+    margin-right: 20px; /* Add spacing between list items */
+}
+
+nav ul li a {
+    text-decoration: none; /* Remove underline from links */
+    color: #fff; /* Text color for links */
+    font-weight: bold; /* Make links bold */
+}
+
+nav ul li a:hover {
+    text-decoration: underline; /* Underline links on hover */
+}
+/* SEARCH */
+/* Style the form container */
+form {
+    max-width: 400px; /* Adjust the maximum width as needed */
+    margin: 0 auto; /* Center the form horizontally */
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f2f2f2;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the form headings */
+h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+/* Style form labels */
+label {
+    font-weight: bold;
+}
+
+/* Style radio buttons and checkboxes */
+input[type="radio"],
+input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+/* Style text inputs and number inputs */
+input[type="text"],
+input[type="number"],
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+/* Style the submit button */
+input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Change button color on hover */
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Optional: Style the select dropdown arrow */
+select {
+    appearance: none; /* Remove default appearance (arrow) */
+    background-image: url('arrow-down.png'); /* Replace with your own arrow image */
+    background-repeat: no-repeat;
+    background-position: right center;
+    padding-right: 30px; /* Adjust padding to make room for the arrow */
+}
+/* TABLE */
+/* Style the table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+/* Style table headers */
+th {
+    background-color: #007bff;
+    color: #fff;
+    font-weight: bold;
+    text-align: left;
+    padding: 10px;
+}
+
+/* Style table rows */
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Style table cells (data) */
+td {
+    padding: 10px;
+}
+
+/* Style links within table cells */
+td a {
+    text-decoration: none;
+    color: #007bff;
+    margin-right: 10px;
+}
+
+/* Change link color on hover */
+td a:hover {
+    color: #0056b3;
+}
+/* ABOUT US */
+/* Custom styles for the "About Us" page */
+/* Custom styles for the "About Us" page */
+#about-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    margin-bottom: 50px;
+    background-color: #fff; /* Background color for the "About Us" content */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow effect */
+    max-width: 100vw; /* Set the maximum width to 70% of the viewport width */
+}
+
+/* Style for the "About Us" page content */
+#about-content {
+    margin-bottom: 70px;
+    text-align: center; /* Center text within the container */
+}
+
+
+/* CARD */
+/* Style the card container */
+.card {
+    width: 300px; /* Adjust the card width as needed */
+    margin: 0 auto; /* Center the card horizontally */
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f2f2f2;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center; /* Center-align the card content */
+}
+
+/* Style the card title */
+.card h1 {
+    font-size: 24px;
+    margin: 10px 0;
+}
+
+/* Style the card paragraphs */
+.card p {
+    margin: 5px 0;
+}
+
+/* Style links within the card */
+.card a {
+    text-decoration: none;
+    color: #007bff;
+    margin-right: 10px;
+}
+
+/* Change link color on hover */
+.card a:hover {
+    color: #0056b3;
+}
+
+
+/* SECTION */
+.center{
+    text-align: center;
+}
+/* Style the card grid */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns */
+    grid-template-rows: repeat(4, auto); /* Four rows */
+    gap: 20px; /* Adjust the gap between cards as needed */
+}
+
+/* Style individual cards (sections) */
+section {
+    background-color: #f2f2f2;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Style headings within the cards */
+section h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+
+
+/* Style list items within the cards */
+section ul li {
+    margin-bottom: 5px;
+}
+
+
+/* FOOOTER */
+/* Style the footer */
+footer {
+    background-color: #333; /* Background color for the footer */
+    color: #fff; /* Text color for the footer */
+    padding: 20px 0; /* Padding on top and bottom of the footer */
+    text-align: center; /* Center-align the content within the footer */
+    margin-top: 320px;
+}
+
+footer p {
+    margin: 5px 0; /* Add spacing between paragraphs within the footer */
+}
+
+footer a {
+    text-decoration: none; /* Remove underline from links */
+    color: #fff; /* Text color for links in the footer */
+    font-weight: bold; /* Make links bold */
+}
+
+footer a:hover {
+    text-decoration: underline; /* Underline links on hover */
+}
+
+
