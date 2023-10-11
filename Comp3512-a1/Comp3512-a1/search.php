@@ -2,7 +2,11 @@
 <?php
         include('H&S/header.php'); // Include the common header
         require("db.php");
-
+        
+     
+       // foreach ($data as $row) {
+     // }
+     // $database = null;
         ?>
 
     <h2>Search for Songs</h2>
@@ -18,19 +22,30 @@
         <label for="search_artist">Artist:</label>
         <select id="search_artist" name="search_artist">
             <option value="">Select an Artist</option>
-            
-           
-            
-            
-            
-            
+        
+                 <?php 
+                    $sql = "SELECT * from artists order by artist_name";
+                    $result = $database->query($sql);
+                    $data = $result->fetchAll(PDO::FETCH_ASSOC); 
+                    foreach ($data as $row){
+                      echo '<option value="' . $row['artist_name'] . '">' . $row['artist_name'] . '</option>';
+                     }
+                 ?>
         </select>
         <br>
+
         <input type="radio" name="search_type" value="genre"> 
         <label for="search_genre">Genre:</label>
         <select id="search_genre" name="search_genre">
             <option value="">Select a Genre</option>
-
+                 <?php 
+                    $sql = "SELECT * from genres order by genre_name";
+                    $result = $database->query($sql);
+                    $data = $result->fetchAll(PDO::FETCH_ASSOC); 
+                    foreach ($data as $row){
+                      echo '<option value="' . $row['genre_name'] . '">' . $row['genre_name'] . '</option>';
+                     }
+                 ?>
             
         </select>
         <br>
