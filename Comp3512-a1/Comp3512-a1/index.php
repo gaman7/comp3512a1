@@ -80,7 +80,7 @@
                    ORDER BY studying_score DESC
                    LIMIT 10";
         // Execute query8 and fetch results
-       
+        $result1 = $database->query($query1);
     ?>
 
 <main>
