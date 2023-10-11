@@ -80,6 +80,7 @@
                    ORDER BY studying_score DESC
                    LIMIT 10";
         // Execute query8 and fetch results
+       
     ?>
 
 <main>
@@ -89,7 +90,12 @@
     <section>
         <h3>Top Genres</h3>
         <ul>
-              <!-- ... PHP HERE ... -->
+            <?php
+        while ($row1 = $result1->fetch(PDO::FETCH_ASSOC)) {
+                echo '<li>' . $row1['genre_name'] . ' - ' . $row1['song_count'] . ' songs</li>';
+                
+              }
+            ?>
         </ul>
     </section>
 
