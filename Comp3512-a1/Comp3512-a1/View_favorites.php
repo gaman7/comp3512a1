@@ -1,9 +1,6 @@
 <?php
-
 include("H&S/header.php");
 require('db.php');
-
-
 
 session_start();
 
@@ -22,13 +19,8 @@ if (isset($_GET['add_to_favorites'])) {
 }
 
 
-
-
-// Display the user's favorite songs
 if (isset($_SESSION['favorite_songs']) && !empty($_SESSION['favorite_songs'])) {
     $favorite_songs = $_SESSION['favorite_songs'];
-    echo "<input type='submit' name='remove_all' value='Remove All'>";
-    // Fetch and display details of favorite songs
     echo "<h1>My Favorite Songs</h1>";
     echo "<table>";
     echo "<tr>";
@@ -40,6 +32,32 @@ if (isset($_SESSION['favorite_songs']) && !empty($_SESSION['favorite_songs'])) {
     echo "<th>Action</th>";
     echo"<th></th>";
     echo "</tr>";
+
+?>
+<!DOCTYPE html>
+ <html>
+ <form method="post" action="view_favorites.php"> 
+     <button type="submit" name="remove_all" value="1">Remove All</button>
+ </form>
+
+
+<?php
+ require("db.php");
+
+if (isset($_POST['remove_all'])) {
+    // Check if the user's favorites array exists in the session
+    if (isset($_SESSION['favorite_songs'])) {
+        $_SESSION['favorite_songs'] = array();
+    }
+    header('Location: view_favorites.php');
+    exit();
+}
+
+
+
+ ?>
+</html>
+<?php
 
     foreach ($favorite_songs as $song_id) {
       
@@ -92,17 +110,4 @@ if (isset($_GET['remove_from_favorites'])) {
     header('Location: view_favorites.php');
     exit;
 }
-
-if (isset($_POST['remove_all'])) {
-    // Check if the user's favorites array exists in the session
-    if (isset($_SESSION['favorite_songs'])) {
-        $_SESSION['favorite_songs'] = array();
-    }
-    header('Location: view_favorites.php');
-    
-}
-
-
-include("H&S/footer.php");
-
 ?>
