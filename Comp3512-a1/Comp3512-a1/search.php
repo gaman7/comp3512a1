@@ -1,4 +1,6 @@
+
 <?php
+//updated
 include('H&S/header.php'); // Include the common header
 require("db.php");
 

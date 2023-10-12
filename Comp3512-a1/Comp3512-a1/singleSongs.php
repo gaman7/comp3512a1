@@ -6,9 +6,9 @@
 
         //SONG MAY NEED TO BE SONG_ID
         if ( isset($_GET['song']) ) { 
-            $paintings = getPaintings($pdo, $_GET['song']); 
+            $songs = getSongs($database, $_GET['song']); 
          }
-         $pdo = null;
+         $database = null;
 
         function getSongs($database, $song_id) {
             $sql = "SELECT title, year, duration FROM songs WHERE song_id=?"; 
@@ -27,7 +27,7 @@
          function outputSongHeader($songs) {
             echo "<h3>Song Informtation</h3>";
             echo "<table class='table'>";
-            foreach ($songs as $row) {
+          //  foreach ($songs as $row) {
                echo "<tr>";
                echo "<td>" . $row['title'] . "</td>";
                echo "<td>" . $row['year'] . "</td>";
@@ -36,7 +36,7 @@
                echo "<td>" . $row['artist_name'] . "</td>";
                echo "<td>" . $row['type_name'] . "</td>";
                echo "</tr>";
-             }
+          //   }
             echo "</table>";
          }
         ?>
