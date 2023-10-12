@@ -64,6 +64,7 @@ if (isset($_GET['search_type'])) {
     $statement->execute();
 }
 
+
 // Display the table headers
 echo "<table>";
 echo "<tr><th>Title</th><th>Artist</th><th>Year</th><th>Genre</th><th>Popularity</th><th>Action</th></tr>";
