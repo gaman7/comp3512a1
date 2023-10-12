@@ -1,21 +1,19 @@
-
-<?php
-// Define the path to the database file
-$databasePath = 'data/music.db';
+ <?php
+// Define the SQLite database file path
+$databaseFile = 'data/music.db'; // Change the path to your SQLite database file
 
 try {
-    $database = new PDO("sqlite:$databasePath");
-    $database->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    
-    $query= "SELECT COUNT(*) as row_count FROM Songs";
-$result=$database->query($query);
-$row=$result->fetch(PDO::FETCH_ASSOC);
-echo"Number of rows in 'songs' table: " .$row['row_count'];
+    // Create a PDO connection to the SQLite database
+    $pdo = new PDO("sqlite:$databaseFile");
+
+    // Set the PDO error mode to exception
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    // Set UTF-8 character set (optional)
+    $pdo->exec("PRAGMA encoding = 'UTF-8'");
 } catch (PDOException $e) {
-    // Handle database connection error
     die("Database connection failed: " . $e->getMessage());
 }
-
 
 ?>
 
