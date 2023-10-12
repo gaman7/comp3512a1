@@ -17,7 +17,6 @@ if (isset($_GET['song_id'])) {
     if (!in_array($songID, $_SESSION['favorite_songs'])) {
         $_SESSION['favorite_songs'][] = $songID;
     }
-
     // Redirect back to the previous page (the Browse/Search Results Page)
     header("Location: search.php");
     exit();
