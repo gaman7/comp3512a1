@@ -10,7 +10,7 @@
         ?>
 
     <h2>Search for Songs</h2>
-    <form action="search.php" method="POST">
+    <form action="browse_search.php" method="POST">
        
         
         <label>Search By:</label><br>
