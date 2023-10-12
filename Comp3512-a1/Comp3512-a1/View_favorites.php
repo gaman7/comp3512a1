@@ -1,100 +1,65 @@
 <?php
 
 include("H&S/header.php");
+require('db.php');
 
+include("H&S/header.php");
+require("db.php");
 
-// if (isset($_GET['search_type'])) {
-//     // Retrieve and sanitize query string parameters
-//     $searchType = $_GET['search_type'];
-//     $searchTerm = $_GET['search_term'];
+session_start();
 
-//     if($searchType == 'artists') {
-//     $sql = "SELECT song_id, SUBSTR(title, 1, 25) AS truncated_title, artist_name, year, genre_name, popularity FROM songs
-//     JOIN artists ON songs.artist_id = artists.artist_id
-//     JOIN genres ON songs.genre_id = genres.genre_id
-//     WHERE year < :searchYear";
-//     }
-//     if($searchType == 'artists') {
-//         $sql = "SELECT song_id, SUBSTR(title, 1, 25) AS truncated_title, artist_name, year, genre_name, popularity FROM songs
-//         JOIN artists ON songs.artist_id = artists.artist_id
-//         JOIN genres ON songs.genre_id = genres.genre_id
-//         WHERE year < :searchYear";
-//         }
+// Check if there's a request to add a song to favorites
+if (isset($_GET['add_to_favorites'])) {
+    $song_id = $_GET['add_to_favorites'];
 
-//     // Check if the user selected "Year Less Than" or "Year Greater Than"
-//     if ($searchType === 'year_less') {
-//         $sql = "SELECT song_id, SUBSTR(title, 1, 25) AS truncated_title, artist_name, year, genre_name, popularity FROM songs
-//                 JOIN artists ON songs.artist_id = artists.artist_id
-//                 JOIN genres ON songs.genre_id = genres.genre_id
-//                 WHERE year < :searchYear";
-//     } elseif ($searchType === 'year_greater') {
-//         $sql = "SELECT song_id, SUBSTR(title, 1, 25) AS truncated_title, artist_name, year, genre_name, popularity FROM songs
-//                 JOIN artists ON songs.artist_id = artists.artist_id
-//                 JOIN genres ON songs.genre_id = genres.genre_id
-//                 WHERE year > :searchYear";
-//     } else {
-//         // Handle other search types (e.g., title, artist, genre)
-//         $sql = "SELECT song_id, SUBSTR(title, 1, 25) AS truncated_title, artist_name, year, genre_name, popularity FROM songs
-//                 JOIN artists ON songs.artist_id = artists.artist_id
-//                 JOIN genres ON songs.genre_id = genres.genre_id
-//                 WHERE $searchType LIKE :searchTerm";
-//     }
-
-//     // Prepare and execute the SQL query
-//     if ($searchType === 'year_less' || $searchType === 'year_greater') {
-//         $searchYear = $_GET['search_year'];
-//         $statement = $database->prepare($sql);
-//         $statement->bindValue(':searchYear', $searchYear, PDO::PARAM_INT);
-//     } else {
-//         // Handle other search types (e.g., title, artist, genre)
-//         $statement = $database->prepare($sql);
-//         $statement->bindValue(':searchTerm', "%$searchTerm%", PDO::PARAM_STR);
-//     }
-    
-//     $statement->execute();
-// } else {
-//     // If no query string parameters are present, retrieve all songs
-//     $sql = "SELECT song_id, SUBSTR(title, 1, 25) AS truncated_title, artist_name, year, genre_name, popularity FROM songs
-//             JOIN artists ON songs.artist_id = artists.artist_id
-//             JOIN genres ON songs.genre_id = genres.genre_id";
-    
-//     // Prepare and execute the SQL query
-//     $statement = $database->prepare($sql);
-//     $statement->execute();
-// }
-
- 
-
-// Display the table headers
-echo "<table>";
-echo "<tr><th>Title</th><th>Artist</th><th>Year</th><th>Genre</th><th>Popularity</th><th>Action</th></tr>";
-
-
-// Fetch and display the search results in a table row
-while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-    $songID = $row['song_id'];
-    $truncatedTitle = $row['truncated_title'];
-    $artist = $row['artist_name'];
-    $year = $row['year'];
-    $genre = $row['genre_name'];
-    $popularity = $row['popularity'];
-    
-    // Display each result as a table row
-    echo "<tr>";
-    echo "<td><a href='single_song.php?song_id=$songID'>$truncatedTitle</a></td>";
-    echo "<td>$artist</td>";
-    echo "<td>$year</td>";
-    echo "<td>$genre</td>";
-    echo "<td>$popularity</td>";
-    echo "<td><a href='single_song.php?song_id=$songID'>View</a>";
-    echo "<a href='add_to_favorites.php?song_id=$songID'>Add to Favorites</a></td>";
-    echo "</tr>";
+    // Check if the user's favorites array exists in the session
+    if (isset($_SESSION['favorite_songs'])) {
+        // Add the song to the favorites array in the session
+        $_SESSION['favorite_songs'][] = $song_id;
+    } else {
+        // Create a new favorites array in the session
+        $_SESSION['favorite_songs'] = [$song_id];
+    }
 }
 
-// Close the table
-echo "</table>";
+// Display the user's favorite songs
+if (isset($_SESSION['favorite_songs']) && !empty($_SESSION['favorite_songs'])) {
+    $favorite_songs = $_SESSION['favorite_songs'];
 
-// Close the database connection
-$database = null;
+    // Fetch and display details of favorite songs
+    echo "<h1>My Favorite Songs</h1>";
+    echo "<table>";
+    echo "<tr>";
+    echo "<th>Title</th>";
+    echo "<th>Artist</th>";
+    echo "<th>Action</th>";
+    echo "</tr>";
+
+    foreach ($favorite_songs as $song_id) {
+        // Fetch song details from the database using $song_id
+        $sql = "SELECT title, artist_name FROM songs
+                LEFT JOIN artists ON songs.artist_id = artists.artist_id
+                WHERE song_id = :song_id";
+
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':song_id', $song_id, PDO::PARAM_INT);
+        $stmt->execute();
+        $song = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($song) {
+            echo "<tr>";
+            echo "<td>" . $song['title'] . "</td>";
+            echo "<td>" . $song['artist_name'] . "</td>";
+            echo '<td><a href="view_favorites.php?remove_from_favorites=' . $song_id . '">Remove</a></td>';
+            echo "</tr>";
+        }
+    }
+
+    echo "</table>";
+} else {
+    echo "<h1>No favorite songs found</h1>";
+}
+
 include("H&S/footer.php");
+
 ?>

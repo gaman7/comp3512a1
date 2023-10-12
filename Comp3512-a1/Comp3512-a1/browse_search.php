@@ -121,7 +121,7 @@ echo "<tr><th>Title</th><th>Artist</th><th>Year</th><th>Genre</th><th>Popularity
         echo "<td>" . $row['year'] . "</td>";
         echo "<td>" . $row['popularity'] . "</td>";
         echo '<td><a href="singleSongs.php?song_id=' . $row['song_id'] . '">View</a>';
-        echo '<a href="add_to_favorites.php?song_id=' . $row['song_id'] . '">Add to Favorites</a></td>';
+        echo '<a href="add_to_favorites.php?add_to_favorites=' . $row['song_id'] . '">Add to Favorites</a></td>';
         echo "</tr>";
     }
 
