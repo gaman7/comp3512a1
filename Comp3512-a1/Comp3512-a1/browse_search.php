@@ -74,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             echo "<td>" . $row['genre_name'] . "</td>";
             echo "<td>" . $row['year'] . "</td>";
             echo "<td>" . $row['popularity'] . "</td>";
-            echo '<td><a href="single_song.php?song_id=' . $row['song_id'] . '">View</a>';
+            echo '<td><a href="singleSongs.php?song_id=' . $row['song_id'] . '">View</a>';
             echo '<a href="add_to_favorites.php?song_id=' . $row['song_id'] . '">Add to Favorites</a></td>';
             echo "</tr>";
         }
@@ -112,7 +112,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo "<td>" . $row['genre_name'] . "</td>";
         echo "<td>" . $row['year'] . "</td>";
         echo "<td>" . $row['popularity'] . "</td>";
-        echo '<td><a href="single_song.php?song_id=' . $row['song_id'] . '">View</a>';
+        echo '<td><a href="singleSongs.php?song_id=' . $row['song_id'] . '">View</a>';
         echo '<a href="add_to_favorites.php?song_id=' . $row['song_id'] . '">Add to Favorites</a></td>';
         echo "</tr>";
     }
