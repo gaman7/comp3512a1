@@ -21,28 +21,33 @@ if (isset($_GET['add_to_favorites'])) {
     }
 }
 
-echo "<input type='submit' name='remove_all' value='Remove All'>";
+
 
 
 // Display the user's favorite songs
 if (isset($_SESSION['favorite_songs']) && !empty($_SESSION['favorite_songs'])) {
     $favorite_songs = $_SESSION['favorite_songs'];
-
+    echo "<input type='submit' name='remove_all' value='Remove All'>";
     // Fetch and display details of favorite songs
     echo "<h1>My Favorite Songs</h1>";
     echo "<table>";
     echo "<tr>";
     echo "<th>Title</th>";
     echo "<th>Artist</th>";
+    echo "<th>Genre</th>";
+    echo "<th>Year</th>";
+    echo "<th>Popularity</th>";
     echo "<th>Action</th>";
     echo"<th></th>";
     echo "</tr>";
 
     foreach ($favorite_songs as $song_id) {
-        // Fetch song details from the database using $song_id
-        $sql = "SELECT title, artist_name FROM songs
-                LEFT JOIN artists ON songs.artist_id = artists.artist_id
-                WHERE song_id = :song_id";
+      
+        $sql = "SELECT songs.title, artists.artist_name, genres.genre_name, songs.year, songs.popularity 
+        FROM songs
+        LEFT JOIN artists ON songs.artist_id = artists.artist_id
+        LEFT JOIN genres ON songs.genre_id = genres.genre_id
+        WHERE songs.song_id = :song_id";
 
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':song_id', $song_id, PDO::PARAM_INT);
@@ -53,6 +58,9 @@ if (isset($_SESSION['favorite_songs']) && !empty($_SESSION['favorite_songs'])) {
             echo "<tr>";
             echo "<td>" . $song['title'] . "</td>";
             echo "<td>" . $song['artist_name'] . "</td>";
+            echo "<td>" . $song['genre_name'] . "</td>";
+            echo "<td>" . $song['year'] . "</td>";
+            echo "<td>" . $song['popularity'] . "</td>";
             echo '<td><a href="singleSongs.php?song_id=' . $song_id . '">View</a>';
             echo '<td><a href="view_favorites.php?remove_from_favorites=' . $song_id . '">Remove</a></td>';
             echo "</tr>";
