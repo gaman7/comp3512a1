@@ -3,8 +3,7 @@
 include("H&S/header.php");
 require('db.php');
 
-include("H&S/header.php");
-require("db.php");
+
 
 session_start();
 
@@ -22,6 +21,9 @@ if (isset($_GET['add_to_favorites'])) {
     }
 }
 
+echo "<input type='submit' name='remove_all' value='Remove All'>";
+
+
 // Display the user's favorite songs
 if (isset($_SESSION['favorite_songs']) && !empty($_SESSION['favorite_songs'])) {
     $favorite_songs = $_SESSION['favorite_songs'];
@@ -33,6 +35,7 @@ if (isset($_SESSION['favorite_songs']) && !empty($_SESSION['favorite_songs'])) {
     echo "<th>Title</th>";
     echo "<th>Artist</th>";
     echo "<th>Action</th>";
+    echo"<th></th>";
     echo "</tr>";
 
     foreach ($favorite_songs as $song_id) {
@@ -50,15 +53,47 @@ if (isset($_SESSION['favorite_songs']) && !empty($_SESSION['favorite_songs'])) {
             echo "<tr>";
             echo "<td>" . $song['title'] . "</td>";
             echo "<td>" . $song['artist_name'] . "</td>";
+            echo '<td><a href="singleSongs.php?song_id=' . $song_id . '">View</a>';
             echo '<td><a href="view_favorites.php?remove_from_favorites=' . $song_id . '">Remove</a></td>';
             echo "</tr>";
         }
     }
 
     echo "</table>";
+    
+   
+   
+    
 } else {
     echo "<h1>No favorite songs found</h1>";
 }
+
+if (isset($_GET['remove_from_favorites'])) {
+    $song_id_to_remove = $_GET['remove_from_favorites'];
+
+
+    if (isset($_SESSION['favorite_songs'])) {
+        
+        $key = array_search($song_id_to_remove, $_SESSION['favorite_songs']);
+        if ($key !== false) {
+            unset($_SESSION['favorite_songs'][$key]);
+        }
+    }
+    
+
+    header('Location: view_favorites.php');
+    exit;
+}
+
+if (isset($_POST['remove_all'])) {
+    // Check if the user's favorites array exists in the session
+    if (isset($_SESSION['favorite_songs'])) {
+        $_SESSION['favorite_songs'] = array();
+    }
+    header('Location: view_favorites.php');
+    
+}
+
 
 include("H&S/footer.php");
 
