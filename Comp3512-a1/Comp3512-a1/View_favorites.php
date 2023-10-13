@@ -35,24 +35,6 @@ if (isset($_SESSION['favorite_songs']) && !empty($_SESSION['favorite_songs'])) {
 
 ?>
 <!DOCTYPE html>
-<head>
-    <style>
-        .remove {
-            background-color: #058C42;
-            color: #020202;
-            padding: 10px 20px;
-            font-size: 16px;
-            border: none;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-            float: right;
-        }
-
-        .remove:hover {
-            background-color: #16DB65; 
-        }
-    </style>
-</head>
 
 <body>
  <html>

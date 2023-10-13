@@ -17,6 +17,9 @@ header {
     text-align: center; /* Center-align the content within the header */
 }
 
+h1, h2, h3, h4{
+    padding-left: 10px;
+}
 h1 {
     font-size: 25px; 
 
@@ -55,6 +58,7 @@ form {
     border-radius: 8px;
     background-color: #f2f2f2;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
 }
 
 /* Style the form headings */
@@ -65,13 +69,24 @@ h2 {
 
 /* Style form labels */
 label {
-    font-weight: bold;
+   font-weight: bold;
+}
+
+.longLable{
+ margin-left: -10px;
+}
+
+input[type="text"],
+input[type="number"]{
+    padding-left: 50px;
 }
 
 /* Style radio buttons and checkboxes */
 input[type="radio"],
 input[type="checkbox"] {
     margin-right: 5px;
+    margin-bottom: 15px;
+    
 }
 
 /* Style text inputs and number inputs */
@@ -84,11 +99,13 @@ select {
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 16px;
+    
+
 }
 
 /* Style the submit button */
 input[type="submit"] {
-    background-color: #007bff;
+    background-color: #058C42;
     color: #fff;
     padding: 10px 20px;
     border: none;
@@ -99,7 +116,7 @@ input[type="submit"] {
 
 /* Change button color on hover */
 input[type="submit"]:hover {
-    background-color: #0056b3;
+    background-color: #16DB65;
 }
 
 /* Optional: Style the select dropdown arrow */
@@ -118,10 +135,17 @@ table {
     margin-bottom: 20px;
 }
 
+caption{
+    color: #04471C;
+    font-weight: bold;
+    text-align: left;
+    padding: 10px;
+}
+
 /* Style table headers */
 th {
-    background-color: #16DB65;
-    color: #050505;
+    background-color: #04471C;
+    color: white;
     font-weight: bold;
     text-align: left;
     padding: 10px;
@@ -132,9 +156,11 @@ tr:nth-child(even) {
     background-color: #f2f2f2;
 }
 
+
 /* Style table cells (data) */
 td {
     padding: 10px;
+   
 }
 
 /* Style links within table cells */
@@ -214,9 +240,17 @@ td a:hover {
 /* Style the card grid */
 .card-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Two columns */
-    grid-template-rows: repeat(4, auto); /* Four rows */
+    /* grid-template-columns: repeat(2, 1fr); Two columns */
+    grid-template-columns: repeat(3, 1fr); /* Two columns */
+    grid-template-rows: repeat(4, auto); /*Four rows */
+
     gap: 20px; /* Adjust the gap between cards as needed */
+}
+
+
+.gridImage{
+    grid-row: 1/-1;
+    margin-left: 20px;
 }
 
 /* Style individual cards (sections) */
@@ -226,6 +260,8 @@ section {
     border-radius: 8px;
     padding: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-right: 20px;
+    margin-left: 20px;
 }
 
 
@@ -246,7 +282,7 @@ section ul li {
 /* FOOOTER */
 /* Style the footer */
 footer {
-    background-color: #333; /* Background color for the footer */
+    background-color: #0D2818; /* Background color for the footer */
     color: #fff; /* Text color for the footer */
     padding: 20px 0; /* Padding on top and bottom of the footer */
     text-align: center; /* Center-align the content within the footer */
@@ -292,6 +328,7 @@ footer a:hover {
   }
   
     .view-link {
+        display:flex;
         background-color: #058C42;
         color: #020202;
         padding: 10px 20px;
@@ -318,9 +355,47 @@ footer a:hover {
         background-color: #16DB65; /* Change the background color on hover */
     }
 
+    .remove {
+        background-color: #058C42;
+        color: #020202;
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+        float: right;
+        margin-bottom: 10px;
+        margin-right: 10px;
+    }
+
+    .remove:hover {
+        background-color: #16DB65; 
+    }
+
     .h1-table{
         color:#03592a;
         font-size: 24px;
-        
+        text-align: center;
+
+        max-width: 100%;
+  max-height:100%;
+
     }
 
+    .image{
+        padding-top: 20px;
+        width:30% ;
+        float: right;
+        margin-right: 200px; 
+     
+    }
+
+    .facts{
+        padding-top: 20px;
+
+        margin-left:200px;
+    }
+
+  
+   
+   

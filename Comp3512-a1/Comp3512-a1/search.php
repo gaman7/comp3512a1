@@ -19,12 +19,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 ?>
 
-<h2>Search for Songs</h2>
+<h1 class="h1-table">Search for Songs</h1>
+
 <form action="browse_search.php" method="POST">
-    <label>Search By:</label><br>
-    <input type="radio" name="search_type" value="title" <?= ($searchType === "title") ? "checked" : "" ?>> Title
-    <input type="text" id="search_term" name="search_term" value="<?= $searchTerm ?>">
-    <br>
+    <label>Search By:</label><br><br>
+
+
+  
 
     <input type="radio" name="search_type" value="artist" <?= ($searchType === "artist") ? "checked" : "" ?>>
     <label for="search_artist">Artist:</label>
@@ -70,11 +71,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </select>
     <br>
 
-    <input type="radio" name="search_type" value="year" <?= ($searchType === "year") ? "checked" : "" ?>> Year
+    <label> <input type="radio" name="search_type" value="title" <?= ($searchType === "title") ? "checked" : "" ?>> Title</label>
+    <input class="longLable" type="text" id="search_term" name="search_term" value="<?= $searchTerm ?>">
+    <br>
+
+  <label>  <input type="radio" name="search_type" value="year" <?= ($searchType === "year") ? "checked" : "" ?>> Year </label>
+   <br>
     <label for="search_year_less">Less:</label>
-    <input type="number" id="search_year_less" name="search_year_less" min="2016" max="2019">
+    <input class="longLable" type="number" id="search_year_less" name="search_year_less" min="2016" max="2019">
     <label for="search_year">Greater: </label>
-    <input type="number" id="search_year_great" name="search_year_great" min="2016" max="2019">
+    <input class="longLable" type="number" id="search_year_great" name="search_year_great" min="2016" max="2019">
     <br>
 
     <br>

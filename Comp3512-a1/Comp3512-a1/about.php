@@ -10,8 +10,13 @@ include('H&S/header.php');
 
 <p>We are a team of developers who created this website as part of our assignment. Our goal is to provide users with the ability to browse and filter songs, examine single songs, and add songs to a favorite list.</p>
 
-<p>If you have any questions or feedback, please feel free to <a href="contact_us.php">contact us</a>.</p>
-<img src="Images/alexander-shatov.png" alt="spotify logo" width="150">
+<p> Github repo link: <a href="https://github.com/gaman7/comp3512a1.git">click here</a></p>
+
+<p> Marselya's Github: <a href="https://github.com/marselyai"> click here</a></p>
+<p> Gaman's Github: <a href="https://github.com/gaman7/"> click here</a></p>
+<p> Nicole's Github: <a href="https://github.com/nrani039"> click here</a></p>
+
+<img src="Images/alexander-shatov.png" alt="spotify logo" width=30%>
 
 </div>
 </div>

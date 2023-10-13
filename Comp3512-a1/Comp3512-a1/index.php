@@ -91,7 +91,7 @@ $result8 = $pdo->query($query8);
 ?>
 
 <main>
-    <h2 class="center">Home</h2>
+    <h2 class="h1-table">Home</h2>
     <div class="card-grid">
         
         <section class="hoverable">
@@ -193,6 +193,12 @@ $result8 = $pdo->query($query8);
                 ?>
             </ul>
         </section>
+
+         <!-- Image -->
+         <div class ="gridImage">
+            <img src="Images/haithem-ferdi.jpg" alt="iPhone with Spotify logo" width=100%>
+            </div>
+
     </div>
 </main>
 

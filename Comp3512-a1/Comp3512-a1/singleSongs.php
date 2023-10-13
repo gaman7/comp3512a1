@@ -34,24 +34,25 @@
         }
         ?>
 
-<section>
-        <h1><?php echo ($request['title']);?></h1>
+        <h1 class="h1-table"><?php echo ($request['title']);?><h1 class="h1-table">by <?php echo ($request['artist_name'])?></h1></h1>
+        
+
+  <div class="facts">
+        <img class="image" src="Images/reet-talreja.jpg" alt="phone screen with music palying">
         <h2>Fast Facts:</h2>
-        <h3>Artist: <?php echo ($request['artist_name'])?></h3>
-        <h3>Artist Type: <?php echo ($request['type_name'])?></h3>
-        <h3>Genre: <?php echo ($request['genre_name'])?></h3>
-        <h3>Song Year: <?php echo ($request['year'])?></h3>
+        <h4>Artist Type: <?php echo ($request['type_name'])?></h4>
+        <h4>Genre: <?php echo ($request['genre_name'])?></h4>
+        <h4>Song Year: <?php echo ($request['year'])?></h4>
         <?php $songTime = $request['duration'];?>
-        <h3>Song time: <?php echo gmdate("i:s", $songTime)?></h3>
+        <h4>Song time: <?php echo gmdate("i:s", $songTime)?></h4>
+
+    </div>
+
+
    
-<section>
-
+        <section>
 <table>
-<caption>Song Analytics</caption>
-
-    <tr>
-    <td>BPM: <?php echo ($request['bpm'])?></td>
-    </tr>
+<h3 class="center">Song Analytics</h3>
 
     <tr>
     <td>Energy:</td>
@@ -95,20 +96,12 @@
     echo '<td><progress value= ' .$popularity. ' max="100"></progress></td>' ?>
     </tr>
 
+    <tr>
+    <td>Beats Per Minute: <?php echo ($request['bpm'])?></td>
+    </tr>
+
     </table>
 
-   
+    </section>
 
-
-<!-- <ul>Analysis Data:
-    <li>BPM: <?php echo ($request['bpm'])?></li>
-    <li>Energy: <?php echo ($request['energy'])?></li>
-    <li>Danceability: <?php echo ($request['danceability'])?></li>
-    <li>Liveness: <?php echo ($request['liveness'])?></li>
-    <li>Valence: <?php echo ($request['valence'])?></li>
-    <li>Acousticness: <?php echo ($request['acousticness'])?></li>
-    <li>Speechiness: <?php echo ($request['speechiness'])?></li>
-    <li>Popularity: <?php echo ($request['popularity'])?></li>
-
-</ul>  -->
 <?php include('H&S/footer.php');

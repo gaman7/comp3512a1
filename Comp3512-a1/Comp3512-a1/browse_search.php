@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo "<h1>No records found</h1>";
     } else {
         // Display the results in a table
-        echo "<h1>Search Results</h1>";
+        echo "<h2 class='center'>Search Results</h2>";
         echo "<table>";
         echo "<tr>";
         echo "<th>Title</th>";
@@ -75,8 +75,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             echo "<td>" . $row['genre_name'] . "</td>";
             echo "<td>" . $row['year'] . "</td>";
             echo "<td>" . $row['popularity'] . "</td>";
-            echo '<td><a href="singleSongs.php?song_id=' . $row['song_id'] . '">View</a>';
-            echo '<a href="add_to_favorites.php?song_id=' . $row['song_id'] . '">Add to Favorites</a></td>';
+            echo '<td ><a class="view-link" href="singleSongs.php?song_id=' . $row['song_id'] . '">View</a><br>';
+            echo '<a class="view-link" href="add_to_favorites.php?song_id=' . $row['song_id'] . '">Add to Favorites</a></td>';
             echo "</tr>";
         }
 
