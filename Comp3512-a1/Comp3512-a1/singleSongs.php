@@ -34,24 +34,28 @@
         }
         ?>
 
-
+<section>
         <h1> Song Information</h1>
-        <h3><?php echo ($request['title'])?></h3>
-        <h3><?php echo ($request['artist_name'])?></h3>
-        <h3><?php echo ($request['type_name'])?></h3>
-        <h3><?php echo ($request['genre_name'])?></h3>
-        <h3><?php echo ($request['year'])?></h3>
-        <h3><?php echo ($request['duration'])?></h3>
+        <h3>Title: <?php echo ($request['title'])?></h3>
+        <h3>Artist: <?php echo ($request['artist_name'])?></h3>
+        <h3>Artist Type: <?php echo ($request['type_name'])?></h3>
+        <h3>Genre: <?php echo ($request['genre_name'])?></h3>
+        <h3>Song Year: <?php echo ($request['year'])?></h3>
+        <?php $songTime = $request['duration'];?>
+        <h3>Song time: <?php echo gmdate("i:s", $songTime)?></h3>
+   
+<section>
+
 
         <ul>Analysis Data:
-    <li>bpm<?php echo ($request['bpm'])?></li>
-    <li><?php echo ($request['energy'])?></li>
-    <li><?php echo ($request['danceability'])?></li>
-    <li><?php echo ($request['liveness'])?></li>
-    <li><?php echo ($request['valence'])?></li>
-    <li><?php echo ($request['acousticness'])?></li>
-    <li><?php echo ($request['speechiness'])?></li>
-    <li><?php echo ($request['popularity'])?></li>
+    <li>BPM: <?php echo ($request['bpm'])?></li>
+    <li>Energy: <?php echo ($request['energy'])?></li>
+    <li>Danceability: <?php echo ($request['danceability'])?></li>
+    <li>Liveness: <?php echo ($request['liveness'])?></li>
+    <li>Valence: <?php echo ($request['valence'])?></li>
+    <li>Acousticness: <?php echo ($request['acousticness'])?></li>
+    <li>Speechiness: <?php echo ($request['speechiness'])?></li>
+    <li>Popularity: <?php echo ($request['popularity'])?></li>
 
 </ul> 
 
