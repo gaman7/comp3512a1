@@ -91,8 +91,8 @@ $result8 = $pdo->query($query8);
 <main>
     <h2 class="center">Home</h2>
     <div class="card-grid">
-        <!-- List 1: Top Genres based on the number of songs -->
-        <section>
+        
+        <section class="hoverable">
             <h3>Top Genres</h3>
             <ul>
                 <?php
@@ -104,7 +104,7 @@ $result8 = $pdo->query($query8);
         </section>
 
         <!-- List 2: Top Artists based on the number of songs -->
-        <section>
+        <section class="hoverable">
             <h3>Top Artists</h3>
             <ul>
                 <?php
@@ -116,7 +116,7 @@ $result8 = $pdo->query($query8);
         </section>
 
         <!-- List 3: Most Popular Songs (song title and artist name) -->
-        <section>
+        <section class="hoverable">
             <h3>Most Popular Songs</h3>
             <ul>
                 <?php
@@ -128,7 +128,7 @@ $result8 = $pdo->query($query8);
         </section>
 
         <!-- List 4: One-hit wonders (most popular songs by artists with only one song) -->
-        <section>
+        <section class="hoverable">
             <h3>One-hit wonders</h3>
             <ul>
                 <?php
@@ -140,7 +140,7 @@ $result8 = $pdo->query($query8);
         </section>
 
         <!-- List 5: Longest Acoustic Song (acousticness > 40, sorted by duration) -->
-        <section>
+        <section class="hoverable">
             <h3>Longest Acoustic Song</h3>
             <ul>
                 <?php
@@ -152,7 +152,7 @@ $result8 = $pdo->query($query8);
         </section>
 
         <!-- List 6: At the Club (danceability*1.6 + energy*1.4 > 80, sorted by calculation) -->
-        <section>
+        <section class="hoverable">
             <h3>At the Club</h3>
             <ul>
                 <?php
@@ -164,7 +164,7 @@ $result8 = $pdo->query($query8);
         </section>
 
                 <!-- List 7: Running Songs (bpm between 120-125) -->
-                <section>
+                <section class="hoverable">
             <h3>Running Songs</h3>
             <ul>
                 <?php
@@ -176,7 +176,7 @@ $result8 = $pdo->query($query8);
         </section>
 
         <!-- List 8: Studying Songs (bpm between 100-115 and speechiness between 1-20) -->
-        <section>
+        <section class="hoverable">
             <h3>Studying Songs</h3>
             <ul>
                 <?php
@@ -190,4 +190,15 @@ $result8 = $pdo->query($query8);
 </main>
 
 <?php include('H&S/footer.php'); // Include the common footer ?>
+
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="./Css/styles.css">
+    
+</head>
+
+</body>
+</html>
+
 

@@ -264,4 +264,17 @@ footer a:hover {
     text-decoration: underline; /* Underline links on hover */
 }
 
-
+.card-grid .hoverable ul {
+    display: none;
+  }
+  
+  /* Style the headings to indicate they are clickable */
+  .card-grid .hoverable h3 {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  
+  /* Show the content within .hoverable on hover */
+  .card-grid .hoverable:hover ul {
+    display: block;
+  }
