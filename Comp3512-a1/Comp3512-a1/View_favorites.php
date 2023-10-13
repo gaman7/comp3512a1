@@ -21,7 +21,7 @@ if (isset($_GET['add_to_favorites'])) {
 
 if (isset($_SESSION['favorite_songs']) && !empty($_SESSION['favorite_songs'])) {
     $favorite_songs = $_SESSION['favorite_songs'];
-    echo "<h1>My Favorite Songs</h1>";
+    echo "<h1>Favorite Songs</h1>";
     echo "<table>";
     echo "<tr>";
     echo "<th>Title</th>";
@@ -49,7 +49,7 @@ if (isset($_SESSION['favorite_songs']) && !empty($_SESSION['favorite_songs'])) {
         }
 
         .remove:hover {
-            background-color: #16DB65; /* Change the background color on hover */
+            background-color: #16DB65; 
         }
     </style>
 </head>
@@ -74,10 +74,18 @@ if (isset($_POST['remove_all'])) {
 }
 
 
-
  ?>
 </html>
+
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="./Css/styles.css">
+</head>
+
+
 <?php
+
 
     foreach ($favorite_songs as $song_id) {
       
@@ -99,16 +107,13 @@ if (isset($_POST['remove_all'])) {
             echo "<td>" . $song['genre_name'] . "</td>";
             echo "<td>" . $song['year'] . "</td>";
             echo "<td>" . $song['popularity'] . "</td>";
-            echo '<td><a href="singleSongs.php?song_id=' . $song_id . '">View</a>';
-            echo '<td><a href="view_favorites.php?remove_from_favorites=' . $song_id . '">Remove</a></td>';
+            echo '<td><a href="singleSongs.php?song_id=' . $song_id . '"class="view-link">View</a>';
+            echo '<td><a href="view_favorites.php?remove_from_favorites='. $song_id . '"class="remove-link">Remove</a></td>';
             echo "</tr>";
         }
     }
 
     echo "</table>";
-    
-   
-   
     
 } else {
     echo "<h1>No favorite songs found</h1>";
@@ -130,4 +135,6 @@ if (isset($_GET['remove_from_favorites'])) {
     header('Location: view_favorites.php');
     exit;
 }
+
 ?>
+</html>

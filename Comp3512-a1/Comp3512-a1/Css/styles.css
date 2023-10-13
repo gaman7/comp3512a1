@@ -117,8 +117,8 @@ table {
 
 /* Style table headers */
 th {
-    background-color: #007bff;
-    color: #fff;
+    background-color: #16DB65;
+    color: #050505;
     font-weight: bold;
     text-align: left;
     padding: 10px;
@@ -137,13 +137,13 @@ td {
 /* Style links within table cells */
 td a {
     text-decoration: none;
-    color: #007bff;
+    color: #111111;
     margin-right: 10px;
 }
 
 /* Change link color on hover */
 td a:hover {
-    color: #0056b3;
+    color: #04771C;
 }
 /* ABOUT US */
 /* Custom styles for the "About Us" page */
@@ -287,3 +287,31 @@ footer a:hover {
   progress:after {
     content: attr(value)'%';
   }
+  
+    .view-link {
+        background-color: #058C42;
+        color: #020202;
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+
+    }
+
+    .view-link:hover {
+        background-color: #16DB65; /* Change the background color on hover */
+    }
+    .remove-link {
+        background-color: #058C42;
+        color: #020202;
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+    }
+    .remove-link:hover{
+        background-color: #16DB65; /* Change the background color on hover */
+    }
+
