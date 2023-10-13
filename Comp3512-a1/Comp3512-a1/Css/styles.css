@@ -9,7 +9,9 @@ body, html {
 
 /* Style the header and navigation */
 header {
-    background-color: #333; /* Background color for the header */
+    /* background-color: #333; Background color for the header */
+    background-color: #04471C; /* Background color for the header */
+
     color: #fff; /* Text color for the header */
     padding: 20px 0; /* Padding on top and bottom of the header */
     text-align: center; /* Center-align the content within the header */

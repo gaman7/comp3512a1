@@ -8,7 +8,7 @@
 <body>
     <header>
         <h1>COMP 3512 Assign1</h1>
-        <h2>Gaman Kaur</h2>
+        <h2> Marselya Ismael, Gaman Kaur, Nicole Ranieri</h2>
         <nav>
             <ul>
                 <li><a href="index.php">Home</a></li>
