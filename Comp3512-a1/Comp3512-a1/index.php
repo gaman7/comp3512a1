@@ -2,6 +2,7 @@
 include('H&S/header.php');
 require('db.php'); // Include the database connection code
 
+
 // List 1: Top Genres based on the number of songs
 $query1 = "SELECT genres.genre_name, COUNT(songs.song_id) AS song_count
            FROM genres
@@ -23,17 +24,18 @@ $query2 = "SELECT artists.artist_name, COUNT(songs.song_id) AS song_count
 $result2 = $pdo->query($query2);
 
 // List 3: Most Popular Songs (song title and artist name)
-$query3 = "SELECT songs.title, artists.artist_name
+$query3 = "SELECT songs.title, artists.artist_name, songs.song_id
            FROM songs
            INNER JOIN artists ON songs.artist_id = artists.artist_id
            GROUP BY songs.song_id, artists.artist_name
            ORDER BY MAX(songs.popularity) DESC
-           LIMIT 10";
+           LIMIT 10";           
 
 $result3 = $pdo->query($query3);
 
+
 // List 4: One-hit wonders (most popular songs by artists with only one song)
-$query4 = "SELECT songs.title, artists.artist_name
+$query4 = "SELECT songs.title, artists.artist_name, songs.song_id
            FROM songs
            INNER JOIN artists ON songs.artist_id = artists.artist_id
            WHERE artists.artist_id IN (
@@ -47,7 +49,7 @@ $query4 = "SELECT songs.title, artists.artist_name
 $result4 = $pdo->query($query4);
 
 // List 5: Longest Acoustic Song (acousticness > 40, sorted by duration)
-$query5 = "SELECT songs.title, artists.artist_name, songs.duration
+$query5 = "SELECT songs.title, artists.artist_name, songs.duration, songs.song_id
            FROM songs
            INNER JOIN artists ON songs.artist_id = artists.artist_id
            WHERE songs.acousticness > 40
@@ -57,7 +59,7 @@ $query5 = "SELECT songs.title, artists.artist_name, songs.duration
 $result5 = $pdo->query($query5);
 
 // List 6: At the Club (danceability*1.6 + energy*1.4 > 80, sorted by calculation)
-$query6 = "SELECT songs.title, artists.artist_name, (songs.danceability*1.6 + songs.energy*1.4) AS club_score
+$query6 = "SELECT songs.title, artists.artist_name, songs.song_id, (songs.danceability*1.6 + songs.energy*1.4) AS club_score
            FROM songs
            INNER JOIN artists ON songs.artist_id = artists.artist_id
            WHERE (songs.danceability*1.6 + songs.energy*1.4) > 80
@@ -67,7 +69,7 @@ $query6 = "SELECT songs.title, artists.artist_name, (songs.danceability*1.6 + so
 $result6 = $pdo->query($query6);
 
 // List 7: Running Songs (bpm between 120-125, sorted by calculation)
-$query7 = "SELECT songs.title, artists.artist_name, (songs.energy*1.3 + songs.valence*1.6) AS running_score
+$query7 = "SELECT songs.title, artists.artist_name, songs.song_id, (songs.energy*1.3 + songs.valence*1.6) AS running_score
            FROM songs
            INNER JOIN artists ON songs.artist_id = artists.artist_id
            WHERE songs.bpm BETWEEN 120 AND 125
@@ -77,7 +79,7 @@ $query7 = "SELECT songs.title, artists.artist_name, (songs.energy*1.3 + songs.va
 $result7 = $pdo->query($query7);
 
 // List 8: Studying Songs (bpm between 100-115 and speechiness between 1-20, sorted by calculation)
-$query8 = "SELECT songs.title, artists.artist_name,
+$query8 = "SELECT songs.title, artists.artist_name, songs.song_id,
                       (songs.acousticness*0.8)+(100-songs.speechiness)+(100-songs.valence) AS studying_score
            FROM songs
            INNER JOIN artists ON songs.artist_id = artists.artist_id
@@ -121,7 +123,8 @@ $result8 = $pdo->query($query8);
             <ul>
                 <?php
                 while ($row3 = $result3->fetch(PDO::FETCH_ASSOC)) {
-                    echo '<li>' . $row3['title'] . ' by ' . $row3['artist_name'] . '</li>';
+                    // echo '<li>' . $row3['title'] . ' by ' . $row3['artist_name'] . '</li>';
+                    echo '<li><a href="singleSongs.php?song_id=' . $row3['song_id'] . '">' . $row3['title'] . ' by ' . $row3['artist_name'] . '</a></li>';
                 }
                 ?>
             </ul>
@@ -133,7 +136,9 @@ $result8 = $pdo->query($query8);
             <ul>
                 <?php
                 while ($row4 = $result4->fetch(PDO::FETCH_ASSOC)) {
-                    echo '<li>' . $row4['title'] . ' by ' . $row4['artist_name'] . '</li>';
+                   // echo '<li>' . $row4['title'] . ' by ' . $row4['artist_name'] . '</li>';
+                    echo '<li><a href="singleSongs.php?song_id=' . $row4['song_id'] . '">' . $row4['title'] . ' by ' . $row4['artist_name'] . '</a></li>';
+
                 }
                 ?>
             </ul>
@@ -145,7 +150,7 @@ $result8 = $pdo->query($query8);
             <ul>
                 <?php
                 while ($row5 = $result5->fetch(PDO::FETCH_ASSOC)) {
-                    echo '<li>' . $row5['title'] . ' by ' . $row5['artist_name'] . ' (Duration: ' . $row5['duration'] . ' seconds)</li>';
+                   echo '<li><a href="singleSongs.php?song_id=' . $row5['song_id'] . '">' . $row5['title'] . ' by ' . $row5['artist_name'] . ' (Duration: ' . $row5['duration'] . ' seconds)</a></li>';
                 }
                 ?>
             </ul>
@@ -157,7 +162,7 @@ $result8 = $pdo->query($query8);
             <ul>
                 <?php
                 while ($row6 = $result6->fetch(PDO::FETCH_ASSOC)) {
-                    echo '<li>' . $row6['title'] . ' by ' . $row6['artist_name'] . '</li>';
+                    echo '<li><a href="singleSongs.php?song_id=' . $row6['song_id'] . '">' . $row6['title'] . ' by ' . $row6['artist_name'] . '</a></li>';
                 }
                 ?>
             </ul>
@@ -169,7 +174,8 @@ $result8 = $pdo->query($query8);
             <ul>
                 <?php
                 while ($row7 = $result7->fetch(PDO::FETCH_ASSOC)) {
-                    echo '<li>' . $row7['title'] . ' by ' . $row7['artist_name'] . '</li>';
+                    echo '<li><a href="singleSongs.php?song_id=' . $row7['song_id'] . '">' . $row7['title'] . ' by ' . $row7['artist_name'] . '</a></li>';
+
                 }
                 ?>
             </ul>
@@ -181,7 +187,8 @@ $result8 = $pdo->query($query8);
             <ul>
                 <?php
                 while ($row8 = $result8->fetch(PDO::FETCH_ASSOC)) {
-                    echo '<li>' . $row8['title'] . ' by ' . $row8['artist_name'] . '</li>';
+                    echo '<li><a href="singleSongs.php?song_id=' . $row8['song_id'] . '">' . $row8['title'] . ' by ' . $row8['artist_name'] . '</a></li>';
+
                 }
                 ?>
             </ul>
