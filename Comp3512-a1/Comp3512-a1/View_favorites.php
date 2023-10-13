@@ -21,7 +21,7 @@ if (isset($_GET['add_to_favorites'])) {
 
 if (isset($_SESSION['favorite_songs']) && !empty($_SESSION['favorite_songs'])) {
     $favorite_songs = $_SESSION['favorite_songs'];
-    echo "<h1>Favorite Songs</h1>";
+    echo '<h1 class="h1-table">Favorite Songs</h1>';
     echo "<table>";
     echo "<tr>";
     echo "<th>Title</th>";

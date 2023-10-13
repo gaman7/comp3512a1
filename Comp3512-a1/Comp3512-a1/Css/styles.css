@@ -18,7 +18,8 @@ header {
 }
 
 h1 {
-    font-size: 36px; /* Font size for the main heading */
+    font-size: 25px; 
+
 }
 
 h2 {
@@ -315,5 +316,11 @@ footer a:hover {
     }
     .remove-link:hover{
         background-color: #16DB65; /* Change the background color on hover */
+    }
+
+    .h1-table{
+        color:#03592a;
+        font-size: 24px;
+        
     }
 
