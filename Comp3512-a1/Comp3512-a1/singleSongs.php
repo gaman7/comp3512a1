@@ -1,68 +1,58 @@
 <?php
         include('H&S/header.php'); // Include the common header
         require("db.php");
+  
+        try{
+            $sql = "SELECT title, year, bpm, energy, danceability, liveness,
+            valence, duration, acousticness, speechiness, popularity, 
+            genre_name, artist_name, type_name
+            FROM songs 
+            INNER JOIN genres ON songs.genre_id = genres.genre_id
+            INNER JOIN artists ON songs.artist_id = artists.artist_id
+            INNER JOIN types ON artists.artist_type_id = types.type_id
+            WHERE song_id=:songId";
 
-        //$song_id = $_GET['song_id'];
 
-        //SONG MAY NEED TO BE SONG_ID
-        if ( isset($_GET['song']) ) { 
-            $songs = getSongs($database, $_GET['song']); 
-         }
-         $database = null;
+            $statement = $pdo->prepare($sql);
 
-        function getSongs($database, $song_id) {
-            $sql = "SELECT title, year, duration FROM songs WHERE song_id=?"; 
-            $sql = "SELECT genre_name FROM genre WHERE song_id=?";  
-            $sql = "SELECT artist_name FROM artists WHERE song_id=?"; 
-            $sql = "SELECT type_name FROM types WHERE song_id=?"; 
+            $id = filter_input(INPUT_GET, 'song_id');
+            $statement->bindValue(':songId', $id, PDO::PARAM_INT);
             
-            // $result = $database->query($sql);
-            // return $result->fetchAll(PDO::FETCH_ASSOC); 
-            $statement = $databse->prepare($sql);
-            $statement->bindValue(1, $song_id); 
             $statement->execute();
-            return $statement->fetchAll(PDO::FETCH_ASSOC);
-         }
 
-         function outputSongHeader($songs) {
-            echo "<h3>Song Informtation</h3>";
-            echo "<table class='table'>";
-          //  foreach ($songs as $row) {
-               echo "<tr>";
-               echo "<td>" . $row['title'] . "</td>";
-               echo "<td>" . $row['year'] . "</td>";
-               echo "<td>" . $row['duration'] . "</td>";
-               echo "<td>" . $row['genre_name'] . "</td>";
-               echo "<td>" . $row['artist_name'] . "</td>";
-               echo "<td>" . $row['type_name'] . "</td>";
-               echo "</tr>";
-          //   }
-            echo "</table>";
-         }
+            $request = $statement->fetch();
+            $pdo = null;
+
+            if(!$request){
+                echo "No song found :(";
+                exit();
+            }
+        }
+        catch (PDOException $error){
+            print "Error: " . $error->getMessage() . "br/>";
+            die();
+        }
         ?>
 
-<h2>  Song Information</h2>
 
-<br>
+        <h1> Song Information</h1>
+        <h3><?php echo ($request['title'])?></h3>
+        <h3><?php echo ($request['artist_name'])?></h3>
+        <h3><?php echo ($request['type_name'])?></h3>
+        <h3><?php echo ($request['genre_name'])?></h3>
+        <h3><?php echo ($request['year'])?></h3>
+        <h3><?php echo ($request['duration'])?></h3>
 
-<section>
-    <?php
-         outputSongHeader($songs);
-         ?>
-<section>
+        <ul>Analysis Data:
+    <li>bpm<?php echo ($request['bpm'])?></li>
+    <li><?php echo ($request['energy'])?></li>
+    <li><?php echo ($request['danceability'])?></li>
+    <li><?php echo ($request['liveness'])?></li>
+    <li><?php echo ($request['valence'])?></li>
+    <li><?php echo ($request['acousticness'])?></li>
+    <li><?php echo ($request['speechiness'])?></li>
+    <li><?php echo ($request['popularity'])?></li>
 
-<h3>title, artist name, artist type, genre, year, duration</h3>
-
-<ul>Analysis Data:
-    <li>bpm</li>
-    <li>energy</li>
-    <li>danceability</li>
-    <li>liveness</li>
-    <li>valence</li>
-    <li>acousticness</li>
-    <li>speechiness</li>
-    <li>popularity</li>
-
-</ul>
+</ul> 
 
 <?php include('H&S/footer.php');
