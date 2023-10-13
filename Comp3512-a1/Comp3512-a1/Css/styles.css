@@ -278,3 +278,12 @@ footer a:hover {
   .card-grid .hoverable:hover ul {
     display: block;
   }
+
+  progress {
+    text-align: center;
+    border-radius: 5px;
+
+  }
+  progress:after {
+    content: attr(value)'%';
+  }

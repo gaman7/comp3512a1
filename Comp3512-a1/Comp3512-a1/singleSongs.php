@@ -35,8 +35,8 @@
         ?>
 
 <section>
-        <h1> Song Information</h1>
-        <h3>Title: <?php echo ($request['title'])?></h3>
+        <h1><?php echo ($request['title']);?></h1>
+        <h2>Fast Facts:</h2>
         <h3>Artist: <?php echo ($request['artist_name'])?></h3>
         <h3>Artist Type: <?php echo ($request['type_name'])?></h3>
         <h3>Genre: <?php echo ($request['genre_name'])?></h3>
@@ -46,8 +46,61 @@
    
 <section>
 
+<table>
+<caption>Song Analytics</caption>
 
-        <ul>Analysis Data:
+    <tr>
+    <td>BPM: <?php echo ($request['bpm'])?></td>
+    </tr>
+
+    <tr>
+    <td>Energy:</td>
+    <?php $energy = $request['energy'];
+    echo '<td><progress value= ' .$energy. ' max="100"></progress></td>' ?>
+    </tr>
+
+    <tr>
+    <td>Danceability:</td>
+    <?php $danceability = $request['danceability'];
+    echo '<td><progress value= ' .$danceability. ' max="100"></progress></td>' ?>
+    </tr>
+
+    <tr>
+    <td>Liveness:</td>
+    <?php $liveness = $request['liveness'];
+    echo '<td><progress value= ' .$liveness. ' max="100"></progress></td>' ?>
+    </tr>
+
+    <tr>
+    <td>Valence:</td>
+    <?php $valence = $request['valence'];
+    echo '<td><progress value= ' .$valence. ' max="100"></progress></td>' ?>
+    </tr>
+
+    <tr>
+    <td>Acousticness:</td>
+    <?php $acousticness = $request['acousticness'];
+    echo '<td><progress value= ' .$acousticness. ' max="100"></progress></td>' ?>
+    </tr>
+
+    <tr>
+    <td>Speechiness:</td>
+    <?php $speechiness = $request['speechiness'];
+    echo '<td><progress value= ' .$speechiness. ' max="100"></progress></td>' ?>
+    </tr>
+
+    <tr>
+    <td>Popularity:</td>
+    <?php $popularity = $request['popularity'];
+    echo '<td><progress value= ' .$popularity. ' max="100"></progress></td>' ?>
+    </tr>
+
+    </table>
+
+   
+
+
+<!-- <ul>Analysis Data:
     <li>BPM: <?php echo ($request['bpm'])?></li>
     <li>Energy: <?php echo ($request['energy'])?></li>
     <li>Danceability: <?php echo ($request['danceability'])?></li>
@@ -57,6 +110,5 @@
     <li>Speechiness: <?php echo ($request['speechiness'])?></li>
     <li>Popularity: <?php echo ($request['popularity'])?></li>
 
-</ul> 
-
+</ul>  -->
 <?php include('H&S/footer.php');
