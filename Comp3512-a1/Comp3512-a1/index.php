@@ -1,4 +1,5 @@
 <?php
+//updated version
 include('H&S/header.php');
 require('db.php'); // Include the database connection code
 

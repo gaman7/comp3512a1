@@ -1,5 +1,6 @@
 <?php
 // Include the common header
+//updated version
 include('H&S/header.php');
 ?>
 <div id="about-container">
